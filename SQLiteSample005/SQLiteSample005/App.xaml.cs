@@ -84,7 +84,7 @@ namespace SQLiteSample005
             BackgroundColor = Color.Red, // 入力部の背景色は赤で
             Padding = 5,
             Orientation = StackOrientation.Horizontal,
-            Children = {entry, buttonAdd,entry2,buttonAdd2} // Entryコントロールとボタンコントロールを横に並べる(余計な事したー)
+            Children = {entry, buttonAdd,entry2,buttonAdd2} // Entryコントロールとボタンコントロールを横に並べる(余計な事したぁー)
           },
           listView // その下にリストボックスを置く
         }
