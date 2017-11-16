@@ -1,5 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SQLiteSample005
 {

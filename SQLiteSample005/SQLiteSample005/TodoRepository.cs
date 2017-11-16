@@ -13,7 +13,7 @@ namespace SQLiteSample005
         public TodoRepository()
         {
             _db = DependencyService.Get<ISQLite>().GetConnection(); // <-3
-            _db.CreateTable<TodoItem>(); // <-4
+            _db.CreateTable<TodoItem>(); 
         }
 
         public IEnumerable<TodoItem> GetItems()
