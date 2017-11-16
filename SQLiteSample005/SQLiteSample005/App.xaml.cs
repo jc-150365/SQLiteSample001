@@ -30,7 +30,7 @@ namespace SQLiteSample005
 
             listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Text");
             listView.ItemTemplate.SetBinding(TextCell.DetailProperty, new Binding("CreatedAt", stringFormat: "{0:yyy/MM/dd hh:mm}"));
-            listView.ItemTemplate.SetBinding(TextCell.TextProperty, "byte[]");//画像のバイナリデータを入れたい
+            listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Text");//画像のバイナリデータを入れたい
 
             listView.ItemTapped += async (s, a) => { 
                 var item = (TodoItem)a.Item;
@@ -47,13 +47,20 @@ namespace SQLiteSample005
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            var entry2 = new Entry
+            var entry2 = new Entry//
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             var buttonAdd = new Button
             { 
+                WidthRequest = 60,
+                TextColor = Color.White,
+                Text = "Add"
+            };
+
+            var buttonAdd2 = new Button//
+            {
                 WidthRequest = 60,
                 TextColor = Color.White,
                 Text = "Add"
