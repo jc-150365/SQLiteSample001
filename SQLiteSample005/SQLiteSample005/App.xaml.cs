@@ -81,10 +81,10 @@ namespace SQLiteSample005
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
                 Children = {
           new StackLayout {
-            BackgroundColor = Color.Navy, // 入力部の背景色はネイビー
+            BackgroundColor = Color.Red, // 入力部の背景色は赤で
             Padding = 5,
             Orientation = StackOrientation.Horizontal,
-            Children = {entry, buttonAdd} // Entryコントロールとボタンコントロールを横に並べる
+            Children = {entry, buttonAdd,entry2,buttonAdd2} // Entryコントロールとボタンコントロールを横に並べる(余計な事したー)
           },
           listView // その下にリストボックスを置く
         }
