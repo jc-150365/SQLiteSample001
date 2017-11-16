@@ -27,8 +27,11 @@ namespace SQLiteSample005
                 ItemsSource = _db.GetItems(), 
                 ItemTemplate = new DataTemplate(typeof(TextCell)) 
             };
+
             listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Text");
             listView.ItemTemplate.SetBinding(TextCell.DetailProperty, new Binding("CreatedAt", stringFormat: "{0:yyy/MM/dd hh:mm}"));
+            listView.ItemTemplate.SetBinding(TextCell.TextProperty, "byte[]");//画像のバイナリデータを入れたい
+
             listView.ItemTapped += async (s, a) => { 
                 var item = (TodoItem)a.Item;
                 if (await DisplayAlert("削除してい宜しいですか", item.Text, "OK", "キャンセル"))
@@ -38,16 +41,24 @@ namespace SQLiteSample005
                     listView.ItemsSource = _db.GetItems(); // リスト更新
                 }
             };
+
             var entry = new Entry
             { 
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
+
+            var entry2 = new Entry
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
             var buttonAdd = new Button
             { 
                 WidthRequest = 60,
                 TextColor = Color.White,
                 Text = "Add"
             };
+
             buttonAdd.Clicked += (s, a) => { 
                 if (!String.IsNullOrEmpty(entry.Text))
                 { // Entryに文字列が入力されている場合に処理する
