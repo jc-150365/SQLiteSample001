@@ -29,7 +29,8 @@ namespace SQLiteSample005
             };
 
             listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Text");
-            listView.ItemTemplate.SetBinding(TextCell.DetailProperty, new Binding("CreatedAt", stringFormat: "{0:yyy/MM/dd hh:mm}"));
+            //listView.ItemTemplate.SetBinding(TextCell.DetailProperty, new Binding("CreatedAt", stringFormat: "{0:yyy/MM/dd hh:mm}"));
+            listView.ItemTemplate.SetBinding(TextCell.DetailProperty, new Binding("CreatedAt", stringFormat:"{yyyy/mm/dd}"));
             listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Text");//画像のバイナリデータを入れたい
 
             listView.ItemTapped += async (s, a) => { 
@@ -67,6 +68,16 @@ namespace SQLiteSample005
             };
 
             buttonAdd.Clicked += (s, a) => { 
+                if (!String.IsNullOrEmpty(entry.Text))
+                { // Entryに文字列が入力されている場合に処理する
+                    var item = new TodoItem { Text = entry.Text, CreatedAt = DateTime.Now, Delete = false };
+                    _db.SaveItem(item);
+                    listView.ItemsSource = _db.GetItems(); //リスト更新
+                    entry.Text = ""; // 入力コントロールをクリアする
+                }
+            };
+
+            buttonAdd2.Clicked += (s, a) => {//追加分
                 if (!String.IsNullOrEmpty(entry.Text))
                 { // Entryに文字列が入力されている場合に処理する
                     var item = new TodoItem { Text = entry.Text, CreatedAt = DateTime.Now, Delete = false };
